@@ -92,5 +92,7 @@ else
         isShow = false;
         ideas = await repository.GetIdeas();
         idea = new Idea();
+
+        StateHasChanged(); // Refresh
     }
 }
