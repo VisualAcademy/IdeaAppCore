@@ -5,24 +5,17 @@ using System.Threading.Tasks;
 
 namespace IdeaAppCore.Models;
 
-public class IdeaRepository : IIdeaRepository
+public class IdeaRepository(ApplicationDbContext context) : IIdeaRepository
 {
-    private readonly ApplicationDbContext _context;
-
-    public IdeaRepository(ApplicationDbContext context)
-    {
-        this._context = context;
-    }
-
     public async Task<Idea> AddIdea(Idea idea)
     {
-        _context.Ideas.Add(idea);
-        await _context.SaveChangesAsync();
+        context.Ideas.Add(idea);
+        await context.SaveChangesAsync();
         return idea; 
     }
 
     public async Task<List<Idea>> GetIdeas()
     {
-        return await _context.Ideas.ToListAsync();
+        return await context.Ideas.ToListAsync();
     }
 }
