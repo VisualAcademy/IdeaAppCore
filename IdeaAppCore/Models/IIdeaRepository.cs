@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace IdeaAppCore.Models
+namespace IdeaAppCore.Models;
+
+public interface IIdeaRepository
 {
-    public interface IIdeaRepository
-    {
-        Task<Idea> AddIdea(Idea idea);
-        Task<List<Idea>> GetIdeas();
-    }
+    Task<Idea> AddIdea(Idea idea);
+    Task<List<Idea>> GetIdeas();
 }
